@@ -1,2 +1,2 @@
 # kata_cash_register
-Simple ash register calculator app
+Simple cash register calculator app
