@@ -6,33 +6,42 @@ def cash_register(amountDue, amountPaid):
         amount paid -> float
     Returns change in not denomination
     """
-    notes = {
-        "20000": 200,
-        "10000" : 100,
-        "5000" : 50,
-        "2000" : 20,
-        "1000" : 10,
-        "500" : 5,
-        "200" : 2,
-        "100" : 1,
-        "50" : 0.5,
-        "20" : 0.2,
-        "10" : 0.1
-    }
 
     if not isinstance(amountDue, (int, float)) or not isinstance(amountPaid, (int, float)):
         raise TypeError("Amount paid and amount due must be numerical values")
     if amountDue > amountPaid:
         raise ValueError("Amount paid must be equal or greater than amount due")
+    if amountDue == amountPaid:
+        return 0
+    
     else:
         valid_amountPaid= float(amountPaid)
         valid_amountDue = float(amountDue)
 
-    change_in_cents = round(valid_amountPaid * 100) - round(valid_amountDue * 100)
-    
-    return change_in_cents
+        change = valid_amountPaid - valid_amountDue
 
+        denominations = [200.00, 100.00, 50.00, 20.00, 10.00, 5.00, 2.00, 1.00, 0.5]
 
+        breakdown = {}
+
+        remaining = change
+
+        for note_coin in denominations:
+            count = (remaining // note_coin)
+            remaining = remaining % note_coin
+            breakdown[note_coin] = int(count)
+
+        print(f"The remainder of your change is: {round(remaining, 2)}")
+        print(f"Your change due is: R{round(change,2)}")
+        for key, value in breakdown.items():
+            if key >= 1.00:
+                print(f"R{key} | {value}")
+            else:
+                print(f"{key}c | {value}")
+      
+        #print(breakdown, round(remaining,2))           
+
+    return breakdown, remaining
 
 
 
