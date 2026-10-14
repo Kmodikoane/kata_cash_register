@@ -1,5 +1,5 @@
 import unittest
-from cash_register import cash_register, change_in_cents
+from cash_register import cash_register
 
 class Test_cash_register(unittest.TestCase):
 
@@ -11,11 +11,12 @@ class Test_cash_register(unittest.TestCase):
         with self.assertRaises(ValueError):
             cash_register(576, 459)
 
-    def test_converts_to_cents(self):
-        change_in_cents
-        return
+    def returns_correct_change(self):
+        self.asserEqual(cash_register(1569.96, 4592.12), 3022.16)
 
-    def test_calculates_zero_cents(self):
+    def returns_correct_denominations(self):
+        correct_denominations = {200.0: 17215, 100.0: 1, 50.0: 0, 20.0: 2, 10.0: 0, 5.0: 1, 2.0: 0, 1.0: 0, 0.5: 0}
+        self.asserEqual(cash_register(34887, 3478032.21),)
         return
 
     def test_positive_cents(self):

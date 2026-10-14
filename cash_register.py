@@ -16,32 +16,34 @@ def cash_register(amountDue, amountPaid):
     
     else:
         valid_amountPaid= float(amountPaid)
-        valid_amountDue = float(amountDue)
+        valid_amountDue = float(amountDue) 
 
-        change = valid_amountPaid - valid_amountDue
+        change = round(valid_amountPaid *100) - round(valid_amountDue * 100)
 
-        denominations = [200.00, 100.00, 50.00, 20.00, 10.00, 5.00, 2.00, 1.00, 0.5]
+        denominations = [20000, 10000, 5000, 2000, 1000, 500, 200, 100, 50]
 
         breakdown = {}
 
         remaining = change
 
+        print(f"Your change due is: R{round(valid_amountPaid - valid_amountDue),2}")
+
         for note_coin in denominations:
             count = (remaining // note_coin)
             remaining = remaining % note_coin
-            breakdown[note_coin] = int(count)
+            breakdown[note_coin] = count
 
-        print(f"The remainder of your change is: {round(remaining, 2)}")
-        print(f"Your change due is: R{round(change,2)}")
         for key, value in breakdown.items():
             if key >= 1.00:
-                print(f"R{key} | {value}")
+                print(f"R{key/100} | {value}")
             else:
-                print(f"{key}c | {value}")
-      
-        #print(breakdown, round(remaining,2))           
+                print(f"{key/100}c | {value}")
+
+    print(breakdown)
 
     return breakdown, remaining
+
+cash_register(34887, 34932.21)
 
 
 
