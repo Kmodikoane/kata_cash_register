@@ -24,9 +24,15 @@ def cash_register(amountDue, amountPaid):
         raise TypeError("Amount paid and amount due must be numerical values")
     if amountDue > amountPaid:
         raise ValueError("Amount paid must be equal or greater than amount due")
-    return amountDue, amountPaid
+    else:
+        valid_amountPaid= float(amountPaid)
+        valid_amountDue = float(amountDue)
 
-cash_register(450, 600)
+    change_in_cents = round(valid_amountPaid * 100) - round(valid_amountDue * 100)
+    
+    return change_in_cents
+
+
 
 
 
