@@ -20,8 +20,31 @@ def cash_register(amountDue, amountPaid):
         "10" : 0.1
     }
 
-    if not amountPaid.isdigit() or amountDue.isdigit():
-        raise TypeError("Amount Paid and Amount Due have to be numerical number")
-    else:
-        print("These are numerical numbers")
-        return amountDue, amountPaid
+    if not isinstance(amountDue, (int, float)) or not isinstance(amountPaid, (int, float)):
+        raise TypeError("Amount paid and amount due must be numerical values")
+    if amountDue > amountPaid:
+        raise ValueError("Amount paid must be equal or greater than amount due")
+    return amountDue, amountPaid
+
+cash_register(450, 600)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
