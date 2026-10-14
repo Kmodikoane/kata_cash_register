@@ -14,6 +14,8 @@ class Test_cash_register(unittest.TestCase):
     def returns_correct_change(self):
         self.asserEqual(cash_register(1569.96, 4592.12), 3022.16)
 
+    
+
     def returns_correct_denominations(self):
         correct_denominations = {200.0: 17215, 100.0: 1, 50.0: 0, 20.0: 2, 10.0: 0, 5.0: 1, 2.0: 0, 1.0: 0, 0.5: 0}
         self.asserEqual(cash_register(34887, 3478032.21),)
